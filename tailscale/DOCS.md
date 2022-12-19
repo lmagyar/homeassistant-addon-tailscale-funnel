@@ -32,8 +32,59 @@ the following URL:
 
 <https://login.tailscale.com/start>
 
-You can also create an account during the add-on installation processes,
-however, it is nice to know where you need to go later on.
+### Enabling Tailscale Funnel
+
+With the Tailscale Funnel feature you can access your Home Assistant instance
+from the wider internet using your Tailscale domain (like
+`https://homeassistant.tail1234.ts.net`) even from devices **without installed
+Tailscale VPN client** (eg. general phones, tablets, laptops).
+
+Without the Tailscale Funnel feature, you still will be able to access your
+Home Assistant instance while you are locally connected to your Tailscale VPN.
+
+To use the Tailscale Funnel feature, you need to modify some of your Home
+Assistant and Tailscale settings.
+
+#### Home Assistant prerequisites
+
+Since Home Assistant by default blocks requests from proxies/reverse proxies,
+you need to tell your instance to allow requests from the Tailscale add-on.
+In order to do so, add the following lines to your `/config/configuration.yaml`
+without changing anything:
+
+```yaml
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 127.0.0.1
+```
+
+**Note**: _There is no need to adapt anything in these lines since the addon
+runs on your host network._
+
+#### Tailscale prerequisites
+
+1. Go to [DNS page](https://login.tailscale.com/admin/dns) in Tailscale's admin console 
+  - Choose a **Tailnet name** and click **Enable HTTPS** under HTTPS Certificates (see [Enabling HTTPS](https://tailscale.com/kb/1153/enabling-https/) for more information)
+1. Go to [Settings / Feature Previews page](https://login.tailscale.com/admin/settings/features)
+  - Under the **Funnel** section check that you are invited and have access to this feature (see [Tailscale Funnel](https://tailscale.com/kb/1223/tailscale-funnel/) for more information)
+1. Go to [Access Controls page](https://login.tailscale.com/admin/acls)
+  - Add the below policy entries to the policy file (see [Server role accounts using ACL tags](https://tailscale.com/kb/1068/acl-tags/) for more information)
+
+```json
+{
+  // (other tailnet policy entries here)
+	"tagOwners": {
+		"tag:funnel": ["<CHANGE-IT-TO-YOUR-LOGIN-EMAIL-ADDRESS>"],
+	},
+	"nodeAttrs": [
+		{
+			"target": ["tag:funnel"],
+			"attr":   ["funnel"],
+		},
+	],
+}
+```
 
 ## Installation
 
@@ -61,10 +112,20 @@ network right from their interface.
 
 <https://login.tailscale.com/>
 
-The add-on exposes "Exit Node" capabilities that you can enable from your
-Tailscale account. Additionally, if the Supervisor managed your network (
-which is the default), the add-on will also advertise routes to your
-subnets on all supported interfaces to Tailscale.
+1. Find your Home-Assistant in the [Machines tab](https://login.tailscale.com/admin/machines) and note under which name your device is reachable
+1. Click on the ellipsis icon at the far right and select the **Edit route settings...** option
+  - The add-on exposes "Exit Node" capabilities that you can enable from your Tailscale account.
+  - Additionally, if the Supervisor managed your network (which is the default), the add-on will also advertise routes to your subnets on all supported interfaces to Tailscale.
+1. Click on the ellipsis icon at the far right and select the **Edit ACL tags....** option
+  - Add `tag:funnel` to the list
+  - Click Save to apply tags
+1. Your device should now be reachable under `https://<machine-name>.<tailnet-name>.ts.net` (you should not use any port number you used previously to access Home Assistant) (if you encounter strange browser behaviour or strange error messages, try to clear all site related cookies, clear all browser cache, restart browser)
+
+**Note**: _After initial set up it can take up to 10 minutes for the domain to
+be publicly available. You can use the `dig` command (Linux/MacOS) to regulary
+check if an A-record is already present for your domain
+(`dig <machine-name>.<tailnet-name>.ts.net +short` should return an IP
+address once the record is published)._
 
 ```yaml
 tags:
