@@ -1,5 +1,15 @@
 # Home Assistant Community Add-on: Tailscale
 
+![Warning][warning_stripe]
+
+> This is a **fork** of the [community add-on][community_addon]!
+>
+> **Installation:** Navigate in your Home Assistant frontend to **Settings** -> **Add-ons** -> **Add-on Store**, in the **...** menu at the top right corner click **Repositories**, add `https://github.com/lmagyar/homeassistant-addon-tailscale` as repository.
+>
+> For more details, please see the Documentation below.
+
+![Warning][warning_stripe]
+
 Tailscale is a zero config VPN, which installs on any device in minutes,
 including your Home Assistant instance.
 
@@ -125,12 +135,14 @@ SOFTWARE.
 
 [addon-badge]: https://my.home-assistant.io/badges/supervisor_addon.svg
 [addon]: https://my.home-assistant.io/redirect/supervisor_addon/?addon=a0d7b954_tailscale&repository_url=https%3A%2F%2Fgithub.com%2Fhassio-addons%2Frepository
-[contributors]: https://github.com/hassio-addons/addon-tailscale/graphs/contributors
+[contributors]: https://github.com/lmagyar/homeassistant-addon-tailscale/graphs/contributors
 [discord-ha]: https://discord.gg/c5DvZ4e
 [discord]: https://discord.me/hassioaddons
 [forum]: https://community.home-assistant.io/?u=frenck
 [frenck]: https://github.com/frenck
-[issue]: https://github.com/hassio-addons/addon-tailscale/issues
+[issue]: https://github.com/lmagyar/homeassistant-addon-tailscale/issues
 [reddit]: https://reddit.com/r/homeassistant
-[releases]: https://github.com/hassio-addons/addon-tailscale/releases
+[releases]: https://github.com/lmagyar/homeassistant-addon-tailscale/releases
 [semver]: http://semver.org/spec/v2.0.0.htm
+[warning_stripe]: https://github.com/lmagyar/homeassistant-addon-tailscale/raw/main/images/warning_stripe_wide.png
+[community_addon]: https://github.com/hassio-addons/addon-tailscale

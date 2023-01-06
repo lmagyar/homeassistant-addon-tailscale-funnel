@@ -1,10 +1,10 @@
 ---
 name: Tailscale
-version: dev
+version: 0.7.0.0
 slug: tailscale
 description: Zero config VPN for building secure networks
-url: https://github.com/hassio-addons/addon-tailscale
-codenotary: codenotary@frenck.dev
+url: https://github.com/lmagyar/homeassistant-addon-tailscale
+codenotary: lmagyar1973@gmail.com
 ingress: true
 ingress_port: 0
 ingress_stream: true
@@ -25,3 +25,4 @@ devices:
 host_network: true
 schema:
   tags: ["match(^tag:[a-zA-Z0-9]-?[a-zA-Z0-9]+$)?"]
+image: ghcr.io/lmagyar/{arch}-addon-tailscale

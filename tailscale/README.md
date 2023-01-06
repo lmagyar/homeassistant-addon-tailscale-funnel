@@ -1,5 +1,15 @@
 # Home Assistant Community Add-on: Tailscale
 
+![Warning][warning_stripe]
+
+> This is a **fork** of the [community add-on][community_addon]!
+>
+> **Installation:** Navigate in your Home Assistant frontend to **Settings** -> **Add-ons** -> **Add-on Store**, in the **...** menu at the top right corner click **Repositories**, add `https://github.com/lmagyar/homeassistant-addon-tailscale` as repository.
+>
+> [For more details, please read the full add-on documentation][docs]
+
+![Warning][warning_stripe]
+
 [![Release][release-shield]][release] ![Project Stage][project-stage-shield] ![Project Maintenance][maintenance-shield]
 
 [![Discord][discord-shield]][discord] [![Community Forum][forum-shield]][forum]
@@ -19,45 +29,6 @@ Create a secure network between your servers, computers, and cloud instances.
 Even when separated by firewalls or subnets, Tailscale just works. Tailscale
 manages firewall rules for you, and works from anywhere you are.
 
-{% if channel == "edge" %}
-## WARNING! THIS IS AN EDGE VERSION!
-
-This Home Assistant Add-ons repository contains edge builds of add-ons.
-Edge builds add-ons are based upon the latest development version.
-
-- They may not work at all.
-- They might stop working at any time.
-- They could have a negative impact on your system.
-
-This repository was created for:
-
-- Anybody willing to test.
-- Anybody interested in trying out upcoming add-ons or add-on features.
-- Developers.
-
-If you are more interested in stable releases of our add-ons:
-
-<https://github.com/hassio-addons/repository>
-
-{% endif %}
-{% if channel == "beta" %}
-## WARNING! THIS IS A BETA VERSION!
-
-This Home Assistant Add-ons repository contains beta releases of add-ons.
-
-- They might stop working at any time.
-- They could have a negative impact on your system.
-
-This repository was created for:
-
-- Anybody willing to test.
-- Anybody interested in trying out upcoming add-ons or add-on features.
-
-If you are more interested in stable releases of our add-ons:
-
-<https://github.com/hassio-addons/repository>
-
-{% endif %}
 [discord-shield]: https://img.shields.io/discord/478094546522079232.svg
 [discord]: https://discord.me/hassioaddons
 [forum-shield]: https://img.shields.io/badge/community-forum-brightgreen.svg
@@ -68,5 +39,8 @@ If you are more interested in stable releases of our add-ons:
 [patreon-shield]: https://frenck.dev/wp-content/uploads/2019/12/patreon.png
 [patreon]: https://www.patreon.com/frenck
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-experimental-yellow.svg
-[release-shield]: https://img.shields.io/badge/version-{{ version }}-blue.svg
-[release]: {{ repo }}/tree/{{ version }}
+[release-shield]: https://img.shields.io/github/release/lmagyar/homeassistant-addon-tailscale.svg
+[release]: https://github.com/lmagyar/homeassistant-addon-tailscale/releases
+[docs]: https://github.com/lmagyar/homeassistant-addon-tailscale/blob/main/tailscale/DOCS.md
+[warning_stripe]: https://github.com/lmagyar/homeassistant-addon-tailscale/raw/main/images/warning_stripe_wide.png
+[community_addon]: https://github.com/hassio-addons/addon-tailscale
