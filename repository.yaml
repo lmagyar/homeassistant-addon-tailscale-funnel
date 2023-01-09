@@ -1,4 +1,4 @@
 
-name: Tailscale add-on
-url: https://github.com/lmagyar/homeassistant-addon-tailscale
+name: Tailscale with Funnel support add-on 
+url: https://github.com/lmagyar/homeassistant-addon-tailscale-funnel
 maintainer: "@lmagyar"

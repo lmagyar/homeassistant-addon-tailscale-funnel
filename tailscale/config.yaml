@@ -1,9 +1,9 @@
 ---
-name: Tailscale
+name: Tailscale with Funnel
 version: 0.7.0.0
 slug: tailscale
 description: Zero config VPN for building secure networks
-url: https://github.com/lmagyar/homeassistant-addon-tailscale
+url: https://github.com/lmagyar/homeassistant-addon-tailscale-funnel
 codenotary: lmagyar1973@gmail.com
 ingress: true
 ingress_port: 0
@@ -25,4 +25,4 @@ devices:
 host_network: true
 schema:
   tags: ["match(^tag:[a-zA-Z0-9]-?[a-zA-Z0-9]+$)?"]
-image: ghcr.io/lmagyar/{arch}-addon-tailscale
+image: ghcr.io/lmagyar/{arch}-addon-tailscale-funnel

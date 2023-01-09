@@ -4,7 +4,7 @@
 
 > This is a **fork** of the [community add-on][community_addon]!
 >
-> **Installation:** Navigate in your Home Assistant frontend to **Settings** -> **Add-ons** -> **Add-on Store**, in the **...** menu at the top right corner click **Repositories**, add `https://github.com/lmagyar/homeassistant-addon-tailscale` as repository.
+> **Installation:** Navigate in your Home Assistant frontend to **Settings** -> **Add-ons** -> **Add-on Store**, in the **...** menu at the top right corner click **Repositories**, add `https://github.com/lmagyar/homeassistant-addon-tailscale-funnel` as repository.
 >
 > [For more details, please read the full add-on documentation][docs]
 
@@ -111,31 +111,31 @@ SOFTWARE.
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
 [armhf-shield]: https://img.shields.io/badge/armhf-yes-green.svg
 [armv7-shield]: https://img.shields.io/badge/armv7-yes-green.svg
-[commits-shield]: https://img.shields.io/github/commit-activity/y/lmagyar/homeassistant-addon-tailscale.svg
-[commits]: https://github.com/lmagyar/homeassistant-addon-tailscale/commits/main
-[contributors]: https://github.com/lmagyar/homeassistant-addon-tailscale/graphs/contributors
+[commits-shield]: https://img.shields.io/github/commit-activity/y/lmagyar/homeassistant-addon-tailscale-funnel.svg
+[commits]: https://github.com/lmagyar/homeassistant-addon-tailscale-funnel/commits/main
+[contributors]: https://github.com/lmagyar/homeassistant-addon-tailscale-funnel/graphs/contributors
 [discord-ha]: https://discord.gg/c5DvZ4e
 [discord-shield]: https://img.shields.io/discord/478094546522079232.svg
 [discord]: https://discord.me/hassioaddons
-[docs]: https://github.com/lmagyar/homeassistant-addon-tailscale/blob/main/tailscale/DOCS.md
+[docs]: https://github.com/lmagyar/homeassistant-addon-tailscale-funnel/blob/main/tailscale/DOCS.md
 [forum-shield]: https://img.shields.io/badge/community-forum-brightgreen.svg
 [forum]: https://community.home-assistant.io/?u=frenck
 [frenck]: https://github.com/frenck
-[github-actions-shield]: https://github.com/lmagyar/homeassistant-addon-tailscale/workflows/Publish/badge.svg
-[github-actions]: https://github.com/lmagyar/homeassistant-addon-tailscale/actions
+[github-actions-shield]: https://github.com/lmagyar/homeassistant-addon-tailscale-funnel/workflows/Publish/badge.svg
+[github-actions]: https://github.com/lmagyar/homeassistant-addon-tailscale-funnel/actions
 [github-sponsors-shield]: https://frenck.dev/wp-content/uploads/2019/12/github_sponsor.png
 [github-sponsors]: https://github.com/sponsors/frenck
 [i386-shield]: https://img.shields.io/badge/i386-yes-green.svg
 [issue]: https://github.com/hassio-addons/addon-tailscale/issues
-[issue_forked]: https://github.com/lmagyar/homeassistant-addon-tailscale/issues
-[license-shield]: https://img.shields.io/github/license/lmagyar/homeassistant-addon-tailscale.svg
+[issue_forked]: https://github.com/lmagyar/homeassistant-addon-tailscale-funnel/issues
+[license-shield]: https://img.shields.io/github/license/lmagyar/homeassistant-addon-tailscale-funnel.svg
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2023.svg
 [patreon-shield]: https://frenck.dev/wp-content/uploads/2019/12/patreon.png
 [patreon]: https://www.patreon.com/frenck
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-experimental-yellow.svg
 [reddit]: https://reddit.com/r/homeassistant
-[releases-shield]: https://img.shields.io/github/release/lmagyar/homeassistant-addon-tailscale.svg
-[releases]: https://github.com/lmagyar/homeassistant-addon-tailscale/releases
+[releases-shield]: https://img.shields.io/github/release/lmagyar/homeassistant-addon-tailscale-funnel.svg
+[releases]: https://github.com/lmagyar/homeassistant-addon-tailscale-funnel/releases
 [repository]: https://github.com/hassio-addons/repository
-[warning_stripe]: https://github.com/lmagyar/homeassistant-addon-tailscale/raw/main/images/warning_stripe_wide.png
+[warning_stripe]: https://github.com/lmagyar/homeassistant-addon-tailscale-funnel/raw/main/images/warning_stripe_wide.png
 [community_addon]: https://github.com/hassio-addons/addon-tailscale

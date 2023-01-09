@@ -4,7 +4,11 @@
 
 > This is a **fork** of the [community add-on][community_addon]!
 >
-> **Installation:** Navigate in your Home Assistant frontend to **Settings** -> **Add-ons** -> **Add-on Store**, in the **...** menu at the top right corner click **Repositories**, add `https://github.com/lmagyar/homeassistant-addon-tailscale` as repository.
+> **Installation:** Navigate in your Home Assistant frontend to **Settings** -> **Add-ons** -> **Add-on Store**, in the **...** menu at the top right corner click **Repositories**, add `https://github.com/lmagyar/homeassistant-addon-tailscale-funnel` as repository.
+>
+> This fork:
+>   - Bumps Tailscale to 1.34.2
+>   - Bumps base image to 13.0.1
 >
 > For more details, please see the Documentation below.
 
@@ -134,16 +138,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 [addon-badge]: https://my.home-assistant.io/badges/supervisor_addon.svg
-[addon]: https://my.home-assistant.io/redirect/supervisor_addon/?addon=09716aab_tailscale&repository_url=https%3A%2F%2Fgithub.com%2Flmagyar%2Fhomeassistant-addon-tailscale
-[contributors]: https://github.com/lmagyar/homeassistant-addon-tailscale/graphs/contributors
+[addon]: https://my.home-assistant.io/redirect/supervisor_addon/?addon=88fc4088_tailscale&repository_url=https%3A%2F%2Fgithub.com%2Flmagyar%2Fhomeassistant-addon-tailscale-funnel
+[contributors]: https://github.com/lmagyar/homeassistant-addon-tailscale-funnel/graphs/contributors
 [discord-ha]: https://discord.gg/c5DvZ4e
 [discord]: https://discord.me/hassioaddons
 [forum]: https://community.home-assistant.io/?u=frenck
 [frenck]: https://github.com/frenck
 [issue]: https://github.com/hassio-addons/addon-tailscale/issues
-[issue_forked]: https://github.com/lmagyar/homeassistant-addon-tailscale/issues
+[issue_forked]: https://github.com/lmagyar/homeassistant-addon-tailscale-funnel/issues
 [reddit]: https://reddit.com/r/homeassistant
-[releases]: https://github.com/lmagyar/homeassistant-addon-tailscale/releases
+[releases]: https://github.com/lmagyar/homeassistant-addon-tailscale-funnel/releases
 [semver]: http://semver.org/spec/v2.0.0.htm
-[warning_stripe]: https://github.com/lmagyar/homeassistant-addon-tailscale/raw/main/images/warning_stripe_wide.png
+[warning_stripe]: https://github.com/lmagyar/homeassistant-addon-tailscale-funnel/raw/main/images/warning_stripe_wide.png
 [community_addon]: https://github.com/hassio-addons/addon-tailscale
