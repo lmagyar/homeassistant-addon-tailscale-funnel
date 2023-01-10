@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.7.0.1 (forked)
+
+- Enable Tailscale's Funnel feature
+
 ## 0.7.0.0 (forked)
 
 - Advertise all supported interfaces as Subnets
