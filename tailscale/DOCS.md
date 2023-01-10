@@ -49,12 +49,13 @@ Assistant instance only when your devices (eg. phones, tablets, laptops) are
 connected to your Tailscale VPN, there will be no internet &#10132; VPN
 proxying.
 
-> This is an alpha feature that is invite only. Please go to Tailscale's
-  [Settings / Feature Previews page][tailscale_feature], and under the
-  **Funnel** section check that you are invited and have access to this feature.
-  
 See [Tailscale Funnel][tailscale_info_funnel] for more information.
 
+> **Note:** _This is an alpha feature that is invite only. Please go to
+  Tailscale's [Settings / Feature Previews page][tailscale_feature], and under
+  the **Funnel** section check that you are invited and have access to this
+  feature._
+  
 To use the Tailscale Funnel feature, you need to modify some of your Home
 Assistant and Tailscale settings.
 
@@ -87,17 +88,19 @@ runs on your host network._
 ```json
 {
   // (other tailnet policy entries here)
-	"tagOwners": {
-		"tag:funnel": ["<CHANGE-IT-TO-YOUR-LOGIN-EMAIL-ADDRESS>"],
-	},
-	"nodeAttrs": [
-		{
-			"target": ["tag:funnel"],
-			"attr":   ["funnel"],
-		},
-	],
+  "tagOwners": {
+    "tag:funnel": ["<CHANGE-IT-TO-YOUR-LOGIN-EMAIL-ADDRESS>"],
+  },
+  "nodeAttrs": [
+    {
+      "target": ["tag:funnel"],
+      "attr":   ["funnel"],
+    },
+  ],
 }
 ```
+
+**Note**: _Replace \<CHANGE-IT-TO-YOUR-LOGIN-EMAIL-ADDRESS\> with your email address!_
 
 ## Installation
 
@@ -130,40 +133,40 @@ network right from their interface.
 ## Required Tailscale configuration
 
 1. Find your Home Assistant instance in the [Machines tab][tailscale_machines]
-1. Click on the &#8230; icon at the far right and select the **Edit ACL
-   tags....** option
+1. Click on the **&hellip;** icon at the far right and select the **Edit ACL
+   tags...** option
    - Add `tag:funnel` to the list (see **Prerequisites** above if you can't find
      it)
    - Click Save to apply tags
    - Restart the add-on
-   - Your Home Assistant instance should now be reachable from devices on the
-     internet without Tailscale VPN client under
-     `https://<machine-name>.<tailnet-name>.ts.net`
+   - Your Home Assistant instance should now be reachable under
+     `https://<machine-name>.<tailnet-name>.ts.net` from devices on the internet
+     without Tailscale VPN client 
 
-     **Note**: _After initial set up it can take up to 10 minutes for the domain
-     to be publicly available. You can use the `dig` command (Linux/MacOS) to
-     regularly check if an A-record is already present for your domain (`dig
-     <machine-name>.<tailnet-name>.ts.net +short` should return an IP address
-     once the record is published)._
+   **Note**: _After initial set up it can take up to 10 minutes for the domain
+   to be publicly available. You can use the `dig` command (Linux/MacOS) to
+   regularly check if an A-record is already present for your domain (`dig
+   <machine-name>.<tailnet-name>.ts.net +short` should return an IP address once
+   the record is published)._
 
-     **Note:** _You should not use any port number that you used previously to
-     access Home Assistant from the local network._
+   **Note:** _You should not use any port number that you used previously to
+   access Home Assistant from the local network._
 
-     **Note:** _If you encounter strange browser behaviour or strange error
-     messages, try to clear all site related cookies, clear all browser cache,
-     restart browser_
+   **Note:** _If you encounter strange browser behaviour or strange error
+   messages, try to clear all site related cookies, clear all browser cache,
+   restart browser_
 
 ## Optional Tailscale configuration
 
 1. Find your Home Assistant instance in the [Machines tab][tailscale_machines]
-1. Click on the &#8230; icon at the far right and select the **Edit route
+1. Click on the **&hellip;** icon at the far right and select the **Edit route
    settings...** option
-   - The add-on exposes "Exit Node" capabilities that you can enable from your
+   - The add-on exposes **Exit Node** capabilities that you can enable from your
      Tailscale account
    - Additionally, if the Supervisor managed your network (which is the
-     default), the add-on will also advertise routes to your subnets on all
-     supported interfaces to Tailscale
-1. Click on the &#8230; icon at the far right and select the **Disable key
+     default), the add-on will also advertise routes to your **Subnets** on all
+     supported interfaces, that you can enable from your Tailscale account
+1. Click on the **&hellip;** icon at the far right and select the **Disable key
    expiry** option
 
 ## Add-on configuration
