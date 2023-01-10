@@ -4,9 +4,14 @@
 
 > This is a **fork** of the [community add-on][community_addon]!
 >
-> **Installation:** Navigate in your Home Assistant frontend to **Settings** -> **Add-ons** -> **Add-on Store**, in the **...** menu at the top right corner click **Repositories**, add `https://github.com/lmagyar/homeassistant-addon-tailscale-funnel` as repository.
+> **Installation:** Navigate in your Home Assistant frontend to **Settings** ->
+  **Add-ons** -> **Add-on Store**, in the **...** menu at the top right corner
+  click **Repositories**, add
+  `https://github.com/lmagyar/homeassistant-addon-tailscale-funnel` as
+  repository.
 >
 > This fork:
+>   - Enables Tailscale's Funnel feature
 >   - Advertises all supported interfaces as Subnets
 >   - Bumps Tailscale to 1.34.2
 >   - Bumps base image to 13.0.1
@@ -166,7 +171,8 @@ You have several options to get them answered:
 - The Home Assistant [Community Forum][forum].
 - Join the [Reddit subreddit][reddit] in [/r/homeassistant][reddit]
 
-You could also [open an issue here with the original add-on][issue] or [open an issue here with the forked add-on][issue_forked] GitHub.
+You could also [open an issue here with the original add-on][issue] or [open an
+issue here with the forked add-on][issue_forked] GitHub.
 
 ## Authors & contributors
 
