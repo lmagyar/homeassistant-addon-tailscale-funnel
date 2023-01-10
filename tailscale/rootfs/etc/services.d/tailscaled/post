@@ -25,8 +25,9 @@ for interface in $(bashio::network.interfaces); do
   addresses+=($(bashio::network.ipv4_address "${interface}"))
   addresses+=($(bashio::network.ipv6_address "${interface}"))
 done
-routes=()
 
+# Extract routes to be advertised
+routes=()
 for address in "${addresses[@]}"; do
   if bashio::var.has_value "${address}"; then
     # Skip local link addresses
@@ -43,6 +44,7 @@ for address in "${addresses[@]}"; do
       [[ $(</proc/sys/net/ipv4/ip_forward) -eq 0 ]] && continue
     fi
 
+    # Extract unique routes
     ipinfo="$(/usr/bin/ipcalc --json "${address}")"
     route=$(bashio::jq "${ipinfo}" '.NETWORK + "/" + .PREFIX')
     if ! list::contains "${routes[*]}" "${route}"; then
@@ -73,14 +75,11 @@ do
       --accept-routes \
       --advertise-routes="${routes[*]}" \
       --advertise-tags="${tags}"
-
     break
   fi
   # Well... wait a bit more
   sleep 2
 done
-
-# Set up Tailscale Funnel for Home Assistant
 
 # Wait for the network to be available and logged in
 while true;
@@ -88,51 +87,60 @@ do
   if /opt/tailscale status --json --peers=false --self=false \
     | jq --exit-status '.BackendState == "Running"' > /dev/null;
   then
-
-    # Remove previously configured proxy first
-    # This one is needed because the configuration persistent between reboots
-    /opt/tailscale serve --remove / &> /dev/null || bashio::log.debug "Removal failed, can happen when no previous proxy was configured..."
-
-    bashio::log.debug "Checking if SSL is used..."
-    if bashio::var.true "$(bashio::core.ssl)" ; then
-      ha_service_protocol="https"
-    else
-      ha_service_protocol="http"
-    fi
-    bashio::log.debug "ha_service_protocol: ${ha_service_protocol}"
-    if bashio::var.is_empty "${ha_service_protocol}" ; then
-      bashio::exit.nok "Error checking if SSL is enabled"
-    fi
-
-    if /opt/tailscale status --self=true --peers=false --json | jq -rce ".CertDomains[]" > /dev/null ; then
-      domain=$(/opt/tailscale status --self=true --peers=false --json | jq -rc ".CertDomains[]")
-      bashio::log.info "Your Homeassistant instance is available via Tailscale."
-      bashio::log.info "Your Domain is https://${domain}"
-      # Configure Tailscale proxy
-      # Set up proxy
-      /opt/tailscale serve / proxy ${ha_service_protocol}://localhost:$(bashio::core.port)
-    else
-      bashio::log.warning "Can't get your Tailscale domain, is HTTPS support enabled?"
-      bashio::log.warning "Enable HTTPS for your Tailnet to use the proxy feature"
-      bashio::log.warning "https://tailscale.com/kb/1153/enabling-https/"
-
-      break
-    fi
-
-    # Check if funnel is available
-    if ! funnel_available=$(/opt/tailscale serve funnel off 2>&1) ; then
-      bashio::log.error "${funnel_available}"
-      break
-    fi
-
-    # Set up Funnel
-    bashio::log.warning "Your Homeassistant instance is publicly available using your Tailscale domain."
-    bashio::log.warning "https://${domain}"
-    /opt/tailscale serve funnel on
-    ### # Restart Tailscaled to publish changes
-    ### s6-svc -r /run/service/tailscaled
     break
   fi
   # Well... wait a bit more
   sleep 2
 done
+
+bashio::log.info "Tailscale is running, configuring Funnel..."
+
+declare ha_service_protocol
+declare domain
+
+# Remove previously configured proxy first, because the configuration is persistent between reboots
+/opt/tailscale serve --remove / &> /dev/null
+
+# Checking if SSL is used
+if bashio::var.true "$(bashio::core.ssl)"; then
+  ha_service_protocol="https"
+else
+  ha_service_protocol="http"
+fi
+
+# Check if Tailscale HTTPS is enabled
+if ! /opt/tailscale status --self=true --peers=false --json \
+  | jq -rce ".CertDomains[0]" > /dev/null;
+then
+  bashio::log.warning
+  bashio::log.warning "Can't get your Tailscale domain, is HTTPS support enabled?"
+  bashio::log.warning "See the Prerequisites chapter in the add-on's Documentation."
+  bashio::log.warning
+  bashio::log.warning ">>> THEN RESTART THIS ADD-ON!!! <<<"
+  bashio::log.warning
+  bashio::exit.ok
+fi
+
+# Configure Tailscale proxy
+domain=$(/opt/tailscale status --self=true --peers=false --json | jq -rc ".CertDomains[0]")
+/opt/tailscale serve / proxy ${ha_service_protocol}://localhost:$(bashio::core.port)
+bashio::log.info "Your Home Assistant instance is available within your Tailnet VPN at:"
+bashio::log.info "  https://${domain}"
+
+# Check if funnel is available
+if ! funnel_available=$(/opt/tailscale serve funnel off 2>&1); then
+  bashio::log.warning
+  bashio::log.warning "${funnel_available}"
+  bashio::log.warning "Funnel is not available, is Funnel feature enabled?"
+  bashio::log.warning "See the Required Tailscale configuration chapter in the add-on's Documentation."
+  bashio::log.warning
+  bashio::log.warning ">>> THEN RESTART THIS ADD-ON!!! <<<"
+  bashio::log.warning
+  bashio::exit.ok
+fi
+
+# Set up Funnel
+if $(/opt/tailscale serve funnel on); then
+  bashio::log.info "Your Homeassistant instance is publicly available on the internet at:"
+  bashio::log.info "  https://${domain}"
+fi
