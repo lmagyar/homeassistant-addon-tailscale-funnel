@@ -91,9 +91,8 @@ done
 
 bashio::log.info "Tailscale is running"
 
-bashio::log.info "Enabling Proxy and Funnel..."
+bashio::log.info "Enabling Tailscale Proxy..."
 
-declare ha_service_protocol
 declare domain
 
 # Remove previously configured proxy first, because the configuration is persistent between reboots
@@ -101,9 +100,13 @@ declare domain
 
 # Checking if SSL is used
 if bashio::var.true "$(bashio::core.ssl)"; then
-  ha_service_protocol="https"
-else
-  ha_service_protocol="http"
+  bashio::log.warning
+  bashio::log.warning "Home Assistant is not accessible through plain http connection."
+  bashio::log.warning "See the 'Prerequisites chapter' in the add-on's Documentation."
+  bashio::log.warning
+  bashio::log.warning ">>> CHANGE CONFIGURATION AND THEN RESTART THIS ADD-ON!!! <<<"
+  bashio::log.warning
+  bashio::exit.ok
 fi
 
 # Check if Tailscale HTTPS is enabled
@@ -111,23 +114,25 @@ if ! /opt/tailscale status --self=true --peers=false --json \
   | jq -rce ".CertDomains[0]" > /dev/null;
 then
   bashio::log.warning
-  bashio::log.warning "Can't get your Tailscale domain, is HTTPS support enabled?"
+  bashio::log.warning "Can't get your Tailscale domain, is Tailscale's HTTPS support enabled?"
   bashio::log.warning "See the 'Prerequisites chapter' in the add-on's Documentation."
   bashio::log.warning
-  bashio::log.warning ">>> THEN RESTART THIS ADD-ON!!! <<<"
+  bashio::log.warning ">>> CHANGE CONFIGURATION AND THEN RESTART THIS ADD-ON!!! <<<"
   bashio::log.warning
   bashio::exit.ok
 fi
 domain=$(/opt/tailscale status --self=true --peers=false --json | jq -rc ".CertDomains[0]")
 
 # Set up proxy
-if ! /opt/tailscale serve / proxy ${ha_service_protocol}://localhost:$(bashio::core.port); then
+if ! /opt/tailscale serve / proxy http://localhost:$(bashio::core.port); then
   bashio::log.error "Unable to configure Tailscale Proxy"
   bashio::exit.nok
 fi
 bashio::log.info "Tailscale Proxy is enabled:"
 bashio::log.info "  Your Home Assistant instance is available within your Tailnet VPN at"
 bashio::log.info "  https://${domain}"
+
+bashio::log.info "Enabling Tailscale Funnel..."
 
 # Check if funnel is available
 if ! funnel_available=$(/opt/tailscale serve funnel off 2>&1); then
@@ -136,7 +141,7 @@ if ! funnel_available=$(/opt/tailscale serve funnel off 2>&1); then
   bashio::log.warning "Funnel is not available, is Funnel feature enabled?"
   bashio::log.warning "See the 'Required Tailscale configuration' chapter in the add-on's Documentation."
   bashio::log.warning
-  bashio::log.warning ">>> THEN RESTART THIS ADD-ON!!! <<<"
+  bashio::log.warning ">>> CHANGE CONFIGURATION AND THEN RESTART THIS ADD-ON!!! <<<"
   bashio::log.warning
   bashio::exit.ok
 fi
