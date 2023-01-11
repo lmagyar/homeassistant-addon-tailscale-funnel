@@ -135,9 +135,8 @@ bashio::log.info "  https://${domain}"
 bashio::log.info "Enabling Tailscale Funnel..."
 
 # Check if funnel is available
-if ! funnel_available=$(/opt/tailscale serve funnel off 2>&1); then
+if ! /opt/tailscale serve funnel off; then
   bashio::log.warning
-  bashio::log.warning "${funnel_available}"
   bashio::log.warning "Funnel is not available, is Funnel feature enabled?"
   bashio::log.warning "See the 'Required Tailscale configuration' chapter in the add-on's Documentation."
   bashio::log.warning
