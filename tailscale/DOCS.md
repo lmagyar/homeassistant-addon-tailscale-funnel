@@ -61,8 +61,8 @@ See [Tailscale Funnel][tailscale_info_funnel] for more information.
   the **Funnel** section check that you are invited and have access to this
   feature._
   
-To use the Tailscale Funnel feature, you need to modify some of your Home
-Assistant and Tailscale settings.
+To use the Tailscale Funnel and SSH features, you need to modify some of your
+Home Assistant and Tailscale settings.
 
 ### Home Assistant configuration
 
@@ -104,15 +104,25 @@ runs on your host network._
    HTTPS** under HTTPS Certificates (see [Enabling HTTPS][tailscale_info_https]
    for more information)
 1. [Access Controls page][tailscale_acls]: Add the below policy entries to the
-   policy file (see [Server role accounts using ACL tags][tailscale_info_tags]
-   for more information)
+   policy file (see [Server role accounts using ACL tags][tailscale_info_tags],
+   [Tailscale SSH][tailscale_info_tags], [Tailscale
+   Funnel][tailscale_info_funnel] for more information)
 
 ```json
 {
   // (other tailnet policy entries here)
   "tagOwners": {
     "tag:funnel": ["<CHANGE-IT-TO-YOUR-LOGIN-EMAIL-ADDRESS>"],
+    "tag:ssh":    ["<CHANGE-IT-TO-YOUR-LOGIN-EMAIL-ADDRESS>"],
   },
+  "ssh": [
+    {
+      "action": "check",
+      "src":    ["autogroup:members"],
+      "dst":    ["tag:ssh"],
+      "users":  ["autogroup:nonroot", "root"],
+    },
+  ],
   "nodeAttrs": [
     {
       "target": ["tag:funnel"],
@@ -158,8 +168,8 @@ network right from their interface.
 1. Find your Home Assistant instance in the [Machines tab][tailscale_machines]
 1. Click on the **&hellip;** icon at the far right and select the **Edit ACL
    tags...** option
-   - Add `tag:funnel` to the list (see **Prerequisites** above if you can't find
-     it)
+   - Add `tag:funnel` and `tag:ssh` to the list (see **Prerequisites** above if
+     you can't find it)
    - Click Save to apply tags
    - Restart the add-on
    - Your Home Assistant instance should now be reachable under
@@ -286,5 +296,6 @@ SOFTWARE.
 [tailscale_feature]: https://login.tailscale.com/admin/settings/features
 [tailscale_info_funnel]: https://tailscale.com/kb/1223/tailscale-funnel/
 [tailscale_info_https]: https://tailscale.com/kb/1153/enabling-https/
+[tailscale_info_ssh]: https://tailscale.com/kb/1193/tailscale-ssh/
 [tailscale_info_tags]: https://tailscale.com/kb/1068/acl-tags/
 [tailscale_machines]: https://login.tailscale.com/admin/machines
