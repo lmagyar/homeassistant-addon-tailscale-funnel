@@ -4,7 +4,11 @@
 
 > This is a **fork** of the [community add-on][community_addon]!
 >
-> **Installation:** Navigate in your Home Assistant frontend to **Settings** -> **Add-ons** -> **Add-on Store**, in the **...** menu at the top right corner click **Repositories**, add `https://github.com/lmagyar/homeassistant-addon-tailscale-funnel` as repository.
+> **Installation:** Navigate in your Home Assistant frontend to **Settings** ->
+> **Add-ons** -> **Add-on Store**, in the **...** menu at the top right corner
+> click **Repositories**, add
+> `https://github.com/lmagyar/homeassistant-addon-tailscale-funnel` as
+> repository.
 >
 > [For more details, please read the full add-on documentation][docs]
 
