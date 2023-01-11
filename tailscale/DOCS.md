@@ -45,10 +45,14 @@ from the wider internet using your Tailscale domain (like
 `https://homeassistant.tail1234.ts.net`) even from devices **without installed
 Tailscale VPN client** (eg. general phones, tablets, laptops).
 
+> **Client** &#8658; _Internet_ &#8658; **Tailscale Funnel** (TCP Proxy) &#8658;
+  _VPN_ &#8658; **Tailscale Proxy** (https proxy) &#8594; **HA** (http
+  web-server)
+
 Without the Tailscale Funnel feature, you will be able to access your Home
 Assistant instance only when your devices (eg. phones, tablets, laptops) are
-connected to your Tailscale VPN, there will be no internet &#10132; VPN
-proxying.
+connected to your Tailscale VPN, there will be no Internet &#8658; VPN TCP
+proxying for https communication.
 
 See [Tailscale Funnel][tailscale_info_funnel] for more information.
 
@@ -62,6 +66,23 @@ Assistant and Tailscale settings.
 
 ### Home Assistant configuration
 
+You must configure Home Assistant to **not** use SSL certificates, to be
+accessible through plain http connection. The Tailscale https Proxy will access
+Home Assistant  through `localhost` and will not accept a real certificate,
+connection will be closed with `proxy error: x509: cannot validate certificate
+for 127.0.0.1 because it doesn't contain any IP SANs`
+
+If you still want to use another https connection to access Home Assistant
+through another network, please use the **NGINX Home Assistant SSL proxy**
+add-on.
+
+So these lines have to be removed from your `/config/configuration.yaml`:
+
+```yaml
+http:
+#  ssl_certificate: /ssl/fullchain.pem
+#  ssl_key: /ssl/privkey.pem
+```
 Since Home Assistant by default blocks requests from proxies/reverse proxies,
 you need to tell your instance to allow requests from the Tailscale add-on.
 In order to do so, add the following lines to your `/config/configuration.yaml`
@@ -101,7 +122,8 @@ runs on your host network._
 }
 ```
 
-**Note**: _Replace \<CHANGE-IT-TO-YOUR-LOGIN-EMAIL-ADDRESS\> with your email address!_
+**Note**: _Replace \<CHANGE-IT-TO-YOUR-LOGIN-EMAIL-ADDRESS\> with your email
+address!_
 
 ## Installation
 
