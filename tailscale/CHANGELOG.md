@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.7.0.2 (forked)
+
+- Enable Tailscale's SSH feature
+
 ## 0.7.0.1 (forked)
 
 - Enable Tailscale's Funnel feature
