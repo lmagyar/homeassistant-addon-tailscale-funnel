@@ -3,6 +3,7 @@
 ## 0.7.0.1 (forked)
 
 - Enable Tailscale's Funnel feature
+- Enable Tailscale's Proxy feature
 
 ## 0.7.0.0 (forked)
 
