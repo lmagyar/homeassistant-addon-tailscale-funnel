@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.7.0.3 (forked)
+
+- Bugfix
+
 ## 0.7.0.2 (forked)
 
 - Enable Tailscale's SSH feature

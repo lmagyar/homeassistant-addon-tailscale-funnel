@@ -97,7 +97,7 @@ bashio::log.info "Enabling Tailscale Proxy..."
 declare domain
 
 # Remove previously configured proxy first, because the configuration is persistent between reboots
-/opt/tailscale serve --remove / &> /dev/null
+/opt/tailscale serve --remove / &> /dev/null || true
 
 # Checking if SSL is used
 if bashio::var.true "$(bashio::core.ssl)"; then
