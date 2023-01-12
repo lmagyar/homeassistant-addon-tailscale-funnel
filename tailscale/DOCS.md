@@ -5,10 +5,10 @@
 > This is a **fork** of the [community add-on][community_addon]!
 >
 > **Installation:** Navigate in your Home Assistant frontend to **Settings** ->
-  **Add-ons** -> **Add-on Store**, in the **...** menu at the top right corner
-  click **Repositories**, add
-  `https://github.com/lmagyar/homeassistant-addon-tailscale-funnel` as
-  repository.
+> **Add-ons** -> **Add-on Store**, in the **...** menu at the top right corner
+> click **Repositories**, add
+> `https://github.com/lmagyar/homeassistant-addon-tailscale-funnel` as
+> repository.
 >
 > This fork:
 >   - Enables Tailscale's Funnel, Proxy and SSH features
@@ -104,7 +104,7 @@ runs on your host network._
    for more information)
 1. [Access Controls page][tailscale_acls]: Add the below policy entries to the
    policy file (see [Server role accounts using ACL tags][tailscale_info_tags],
-   [Tailscale SSH][tailscale_info_tags], [Tailscale
+   [Tailscale SSH][tailscale_info_ssh], [Tailscale
    Funnel][tailscale_info_funnel] for more information)
 
 ```json
@@ -146,7 +146,7 @@ address!_
 1. Check the logs of the "Tailscale" add-on to see if everything went well.
 1. Open the **Web UI** of the "Tailscale" add-on to complete authentication and
    couple your Home Assistant instance with your Tailscale account.
-   
+
    **Note:** _Some browsers don't work with this step. It is recommended to
    complete this step on a desktop or laptop computer using the Chrome browser._
 
@@ -168,7 +168,7 @@ network right from their interface.
 1. Click on the **&hellip;** icon at the far right and select the **Edit ACL
    tags...** option
    - Add `tag:funnel` and `tag:ssh` to the list (see **Prerequisites** above if
-     you can't find it)
+     you can't find them)
    - Click Save to apply tags
    - Restart the add-on
    - Your Home Assistant instance should now be reachable under
