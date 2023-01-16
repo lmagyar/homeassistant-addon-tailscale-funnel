@@ -8,7 +8,7 @@ declare -a options
 bashio::log.info 'Starting Tailscale...'
 
 options+=(--state=/data/tailscaled.state)
-options+=(--statedir=/data/)
+options+=(--statedir=/data)
 options+=(--no-logs-no-support)
 options+=(--tun=userspace-networking)
 

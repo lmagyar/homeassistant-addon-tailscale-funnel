@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.7.0.4 (forked)
+
+- Bump base image to 13.1.0
+
 ## 0.7.0.3 (forked)
 
 - Bugfix
