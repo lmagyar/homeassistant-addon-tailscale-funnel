@@ -2,7 +2,7 @@
 
 ## 0.7.0.5 (forked)
 
-- Optionally enable tailscaled debug messages in the add-on's log
+- Only optionally enable tailscaled debug messages in the add-on's log
 
 ## 0.7.0.4 (forked)
 
