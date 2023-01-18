@@ -67,7 +67,7 @@ Home Assistant and Tailscale settings.
 
 You must configure Home Assistant to **not** use SSL certificates, to be
 accessible through plain http connection. The Tailscale https Proxy will access
-Home Assistant  through `localhost` and will not accept a real certificate,
+Home Assistant through `localhost` and will not accept a real certificate,
 connection will be closed with `proxy error: x509: cannot validate certificate
 for 127.0.0.1 because it doesn't contain any IP SANs`
 
@@ -82,6 +82,7 @@ http:
 #  ssl_certificate: /ssl/fullchain.pem
 #  ssl_key: /ssl/privkey.pem
 ```
+
 Since Home Assistant by default blocks requests from proxies/reverse proxies,
 you need to tell your instance to allow requests from the Tailscale add-on.
 In order to do so, add the following lines to your `/config/configuration.yaml`
