@@ -25,4 +25,5 @@ devices:
 host_network: true
 schema:
   tags: ["match(^tag:[a-zA-Z0-9]-?[a-zA-Z0-9]+$)?"]
+  debug_messages: bool?
 image: ghcr.io/lmagyar/{arch}-addon-tailscale-funnel
