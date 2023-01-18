@@ -207,6 +207,7 @@ network right from their interface.
 tags:
   - tag:example
   - tag:homeassistant
+debug_messages: false
 ```
 
 ### Option: `tags`
@@ -219,7 +220,7 @@ More information: <https://tailscale.com/kb/1068/acl-tags/>
 ### Option: `debug_messages`
 
 Optionally enable tailscaled debug messages in the add-on's log. Turn it on only
-in case you are troubleshooting, becasue Tailscale's daemon is quite chatty.
+in case you are troubleshooting, because Tailscale's daemon is quite chatty.
 
 ## Changelog & Releases
 
