@@ -216,6 +216,11 @@ instance. They need to start with `tag:`.
 
 More information: <https://tailscale.com/kb/1068/acl-tags/>
 
+### Option: `debug_messages`
+
+Optionally enable tailscaled debug messages in the add-on's log. Turn it on only
+in case you are troubleshooting, becasue Tailscale's daemon is quite chatty.
+
 ## Changelog & Releases
 
 This repository keeps a change log using [GitHub's releases][releases]
