@@ -44,7 +44,7 @@ from the wider internet using your Tailscale domain (like
 `https://homeassistant.tail1234.ts.net`) even from devices **without installed
 Tailscale VPN client** (eg. general phones, tablets, laptops).
 
-> **Client** &#8658; _Internet_ &#8658; **Tailscale Funnel** (TCP Proxy) &#8658;
+> **Client** &#8658; _Internet_ &#8658; **Tailscale Funnel** (TCP proxy) &#8658;
   _VPN_ &#8658; **Tailscale Proxy** (https proxy) &#8594; **HA** (http
   web-server)
 
