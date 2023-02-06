@@ -16,7 +16,7 @@ options+=(--tun=userspace-networking)
 ./post &
 
 # Run Tailscale
-if bashio::config.true "debug_messages"; then
+if bashio::debug ; then
     exec /opt/tailscaled "${options[@]}"
 else
     exec /opt/tailscaled "${options[@]}" &> /dev/null

@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.7.0.7 (forked)
+
+- Use `log_level` configuration option for tailscaled debug messages
+- Use only info messages if the add-on's configuration is incomplete
+
 ## 0.7.0.6 (forked)
 
 - Bump Tailscale to 1.36.0
