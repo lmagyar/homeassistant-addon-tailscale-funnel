@@ -13,7 +13,7 @@
 > This fork:
 >   - Enables Tailscale's Funnel, Proxy and SSH features
 >   - Advertises all supported interfaces as Subnets
->   - Bumps Tailscale to 1.36.0
+>   - Bumps Tailscale to 1.36.1
 >   - Bumps base image to 13.1.1
 >
 > For more details, please see the Documentation below.

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.7.0.8 (forked)
+
+- Bump Tailscale to 1.36.1
+
 ## 0.7.0.7 (forked)
 
 - Use `log_level` configuration option for tailscaled debug messages
