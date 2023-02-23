@@ -1,8 +1,13 @@
 # Changelog
 
-## vNext (forked)
+## 0.7.0.10 (forked)
 
+- Bump Tailscale to 1.36.2
 - Bump base image to 13.1.2
+
+## ~~0.7.0.9 (forked)~~
+
+_This version number is skipped, just to be in sync with the [non-Funnel version repo](https://github.com/lmagyar/homeassistant-addon-tailscale)._
 
 ## 0.7.0.8 (forked)
 
