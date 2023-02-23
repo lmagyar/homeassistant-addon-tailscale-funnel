@@ -10,6 +10,9 @@
 > `https://github.com/lmagyar/homeassistant-addon-tailscale-funnel` as
 > repository.
 >
+> Use this [invite link](https://login.tailscale.com/admin/feature/rWXbjRuCEc9)
+> to get access to the Funnel feature.
+>
 > This fork:
 >   - Enables Tailscale's Funnel, Proxy and SSH features
 >   - Advertises all supported interfaces as Subnets
