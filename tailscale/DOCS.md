@@ -115,8 +115,8 @@ runs on your host network._
 {
   // (other tailnet policy entries here)
   "tagOwners": {
-    "tag:funnel": ["<CHANGE-IT-TO-YOUR-LOGIN-EMAIL-ADDRESS>"],
-    "tag:ssh":    ["<CHANGE-IT-TO-YOUR-LOGIN-EMAIL-ADDRESS>"],
+    "tag:funnel": ["<CHANGE-IT-TO-YOUR-TAILSCALE-LOGIN-EMAIL-ADDRESS>"],
+    "tag:ssh":    ["<CHANGE-IT-TO-YOUR-TAILSCALE-LOGIN-EMAIL-ADDRESS>"],
   },
   "ssh": [
     {
@@ -135,8 +135,8 @@ runs on your host network._
 }
 ```
 
-**Note**: _Replace \<CHANGE-IT-TO-YOUR-LOGIN-EMAIL-ADDRESS\> with your email
-address!_
+**Note**: _Replace \<CHANGE-IT-TO-YOUR-TAILSCALE-LOGIN-EMAIL-ADDRESS\> with your
+email address!_
 
 ## Installation
 
