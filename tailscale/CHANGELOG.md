@@ -1,7 +1,8 @@
 # Changelog
 
-## vNext (forked)
+## 0.7.0.11 (forked)
 
+- Bump Tailscale to 1.38.1
 - Bump base image to 13.1.3
 
 ## 0.7.0.10 (forked)
