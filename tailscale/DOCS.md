@@ -16,8 +16,8 @@
 > This fork:
 >   - Enables Tailscale's Funnel, Proxy and SSH features
 >   - Advertises all supported interfaces as Subnets
->   - Bumps Tailscale to 1.36.2
->   - Bumps base image to 13.1.2
+>   - Bumps Tailscale to 1.38.1
+>   - Bumps base image to 13.1.3
 >
 > For more details, please see the Documentation below.
 
@@ -115,8 +115,8 @@ runs on your host network._
 {
   // (other tailnet policy entries here)
   "tagOwners": {
-    "tag:funnel": ["<CHANGE-IT-TO-YOUR-LOGIN-EMAIL-ADDRESS>"],
-    "tag:ssh":    ["<CHANGE-IT-TO-YOUR-LOGIN-EMAIL-ADDRESS>"],
+    "tag:funnel": ["<CHANGE-IT-TO-YOUR-TAILSCALE-LOGIN-EMAIL-ADDRESS>"],
+    "tag:ssh":    ["<CHANGE-IT-TO-YOUR-TAILSCALE-LOGIN-EMAIL-ADDRESS>"],
   },
   "ssh": [
     {
@@ -135,8 +135,8 @@ runs on your host network._
 }
 ```
 
-**Note**: _Replace \<CHANGE-IT-TO-YOUR-LOGIN-EMAIL-ADDRESS\> with your email
-address!_
+**Note**: _Replace \<CHANGE-IT-TO-YOUR-TAILSCALE-LOGIN-EMAIL-ADDRESS\> with your
+email address!_
 
 ## Installation
 
@@ -232,6 +232,7 @@ dealing with an unknown issue. Possible values are:
 - `trace`: Show every detail, like all called internal functions.
 - `debug`: Shows detailed debug information.
 - `info`: Normal (usually) interesting events.
+- `notice`: Normal but significant events.
 - `warning`: Exceptional occurrences that are not errors.
 - `error`: Runtime errors that do not require immediate action.
 - `fatal`: Something went terribly wrong. Add-on becomes unusable.
