@@ -216,6 +216,7 @@ in case you are troubleshooting, because Tailscale's daemon is quite chatty.
 The `log_level` option controls the level of log output by the addon and can
 be changed to be more or less verbose, which might be useful when you are
 dealing with an unknown issue. Possible values are:
+
 - `trace`: Show every detail, like all called internal functions.
 - `debug`: Shows detailed debug information.
 - `info`: Normal (usually) interesting events.
