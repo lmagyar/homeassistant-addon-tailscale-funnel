@@ -128,20 +128,27 @@ email address!_
 1. Navigate in your Home Assistant frontend to **Settings** -> **Add-ons** ->
    **Add-on Store**.
 1. In the **...** menu at the top right corner click **Repositories**, add
-   `https://github.com/lmagyar/homeassistant-addon-tailscale` as repository.
-1. Find the "Tailscale" add-on and click it. If it doesn't show up, wait until
-   HA refreshes the information about the add-on, or click **Reload** in the
-   **...** menu at the top right corner.
-1. Click the "Install" button to install the add-on.
-1. Start the "Tailscale" add-on.
-1. Check the logs of the "Tailscale" add-on to see if everything went well.
-1. Open the **Web UI** of the "Tailscale" add-on to complete authentication and
-   couple your Home Assistant instance with your Tailscale account.
+   `https://github.com/lmagyar/homeassistant-addon-tailscale-funnel` as
+   repository.
+1. Find the "Tailscale with Funnel support" add-on and click it. If it doesn't
+   show up, wait until HA refreshes the information about the add-on, or click
+   **Reload** in the **...** menu at the top right corner.
+1. Click the "INSTALL" button to install the add-on.
+
+## How to use
+
+1. Start the "Tailscale with Funnel support" add-on.
+1. Check the logs of the "Tailscale with Funnel support" add-on to see if
+   everything went well.
+1. Open the **Web UI** of the "Tailscale with Funnel support" add-on to complete
+   authentication and couple your Home Assistant instance with your Tailscale
+   account.
 
    **Note:** _Some browsers don't work with this step. It is recommended to
    complete this step on a desktop or laptop computer using the Chrome browser._
 
-1. Done!
+1. Check the logs of the "Tailscale with Funnel support" add-on again, to see if
+   everything went well.
 
 ## Configuration
 
