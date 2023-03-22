@@ -1,4 +1,4 @@
-# Home Assistant Custom Add-on: Tailscale
+# Home Assistant Custom Add-on: Tailscale with Funnel support
 
 ![Warning][warning_stripe]
 
