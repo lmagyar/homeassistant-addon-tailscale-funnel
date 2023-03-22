@@ -92,9 +92,9 @@ runs on your host network._
    HTTPS** under HTTPS Certificates (see [Enabling HTTPS][tailscale_info_https]
    for more information)
 1. [Access Controls page][tailscale_acls]: Add the below policy entries to the
-   policy file (see [Server role accounts using ACL tags][tailscale_info_tags],
-   [Tailscale SSH][tailscale_info_ssh], [Tailscale
-   Funnel][tailscale_info_funnel] for more information)
+   policy file (see [ACL tags][tailscale_info_acl], [Tailscale
+   SSH][tailscale_info_ssh], [Tailscale Funnel][tailscale_info_funnel] for more
+   information)
 
 ```json
 {
@@ -257,5 +257,4 @@ issue here with the forked add-on][issue_forked] on GitHub.
 [tailscale_info_funnel]: https://tailscale.com/kb/1223/tailscale-funnel/
 [tailscale_info_https]: https://tailscale.com/kb/1153/enabling-https/
 [tailscale_info_ssh]: https://tailscale.com/kb/1193/tailscale-ssh/
-[tailscale_info_tags]: https://tailscale.com/kb/1068/acl-tags/
 [tailscale_machines]: https://login.tailscale.com/admin/machines
