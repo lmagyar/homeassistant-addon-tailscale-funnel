@@ -1,34 +1,19 @@
-# Home Assistant Community Add-on: Tailscale
+# Home Assistant Custom Add-on: Tailscale with Funnel support
 
 ![Warning][warning_stripe]
 
-> This is a **fork** of the [community add-on][community_addon]!
->
-> **Installation:** Navigate in your Home Assistant frontend to **Settings** ->
-> **Add-ons** -> **Add-on Store**, in the **...** menu at the top right corner
-> click **Repositories**, add
-> `https://github.com/lmagyar/homeassistant-addon-tailscale-funnel` as
-> repository.
+> This is a **fork** of the abandoned [community add-on][community_addon]!
 >
 > Use this [invite link](https://login.tailscale.com/admin/feature/rWXbjRuCEc9)
 > to get access to the Funnel feature.
 >
 > This fork:
->   - Enables Tailscale's Funnel, Proxy and SSH features
+>   - Enables Tailscale's https Proxy, Funnel and SSH features
 >   - Advertises all supported interfaces as Subnets
->   - Bumps Tailscale to 1.38.1
+>   - Bumps Tailscale to 1.38.2
 >   - Bumps base image to 13.1.3
->
-> For more details, please see the Documentation below.
 
 ![Warning][warning_stripe]
-
-Tailscale is a zero config VPN, which installs on any device in minutes,
-including your Home Assistant instance.
-
-Create a secure network between your servers, computers, and cloud instances.
-Even when separated by firewalls or subnets, Tailscale just works. Tailscale
-manages firewall rules for you, and works from anywhere you are.
 
 ## Prerequisites
 
@@ -107,9 +92,9 @@ runs on your host network._
    HTTPS** under HTTPS Certificates (see [Enabling HTTPS][tailscale_info_https]
    for more information)
 1. [Access Controls page][tailscale_acls]: Add the below policy entries to the
-   policy file (see [Server role accounts using ACL tags][tailscale_info_tags],
-   [Tailscale SSH][tailscale_info_ssh], [Tailscale
-   Funnel][tailscale_info_funnel] for more information)
+   policy file (see [ACL tags][tailscale_info_acl], [Tailscale
+   SSH][tailscale_info_ssh], [Tailscale Funnel][tailscale_info_funnel] for more
+   information)
 
 ```json
 {
@@ -140,21 +125,30 @@ email address!_
 
 ## Installation
 
-1. Click the Home Assistant My button below to open the add-on on your Home
-   Assistant instance.
+1. Navigate in your Home Assistant frontend to **Settings** -> **Add-ons** ->
+   **Add-on Store**.
+1. In the **...** menu at the top right corner click **Repositories**, add
+   `https://github.com/lmagyar/homeassistant-addon-tailscale-funnel` as
+   repository.
+1. Find the "Tailscale with Funnel support" add-on and click it. If it doesn't
+   show up, wait until HA refreshes the information about the add-on, or click
+   **Reload** in the **...** menu at the top right corner.
+1. Click the "INSTALL" button to install the add-on.
 
-   [![Open this add-on in your Home Assistant instance.][addon-badge]][addon]
+## How to use
 
-1. Click the "Install" button to install the add-on.
-1. Start the "Tailscale" add-on.
-1. Check the logs of the "Tailscale" add-on to see if everything went well.
-1. Open the **Web UI** of the "Tailscale" add-on to complete authentication and
-   couple your Home Assistant instance with your Tailscale account.
+1. Start the "Tailscale with Funnel support" add-on.
+1. Check the logs of the "Tailscale with Funnel support" add-on to see if
+   everything went well.
+1. Open the **Web UI** of the "Tailscale with Funnel support" add-on to complete
+   authentication and couple your Home Assistant instance with your Tailscale
+   account.
 
    **Note:** _Some browsers don't work with this step. It is recommended to
    complete this step on a desktop or laptop computer using the Chrome browser._
 
-1. Done!
+1. Check the logs of the "Tailscale with Funnel support" add-on again, to see if
+   everything went well.
 
 ## Configuration
 
@@ -219,7 +213,7 @@ log_level: info
 This option allows you to specify specific ACL tags for this Tailscale
 instance. They need to start with `tag:`.
 
-More information: <https://tailscale.com/kb/1068/acl-tags/>
+More information: [ACL tags][tailscale_info_acl]
 
 ### Option: `log_level`
 
@@ -229,6 +223,7 @@ in case you are troubleshooting, because Tailscale's daemon is quite chatty.
 The `log_level` option controls the level of log output by the addon and can
 be changed to be more or less verbose, which might be useful when you are
 dealing with an unknown issue. Possible values are:
+
 - `trace`: Show every detail, like all called internal functions.
 - `debug`: Shows detailed debug information.
 - `info`: Normal (usually) interesting events.
@@ -236,23 +231,11 @@ dealing with an unknown issue. Possible values are:
 - `warning`: Exceptional occurrences that are not errors.
 - `error`: Runtime errors that do not require immediate action.
 - `fatal`: Something went terribly wrong. Add-on becomes unusable.
+
 Please note that each level automatically includes log messages from a
 more severe level, e.g., `debug` also shows `info` messages. By default,
 the `log_level` is set to `info`, which is the recommended setting unless
 you are troubleshooting.
-
-## Changelog & Releases
-
-This repository keeps a change log using [GitHub's releases][releases]
-functionality.
-
-Releases are based on [Semantic Versioning][semver], and use the format
-of `MAJOR.MINOR.PATCH`. In a nutshell, the version will be incremented
-based on the following:
-
-- `MAJOR`: Incompatible or major changes.
-- `MINOR`: Backwards-compatible new features and enhancements.
-- `PATCH`: Backwards-compatible bugfixes and package updates.
 
 ## Support
 
@@ -260,66 +243,25 @@ Got questions?
 
 You have several options to get them answered:
 
-- The [Home Assistant Community Add-ons Discord chat server][discord] for add-on
-  support and feature requests.
-- The [Home Assistant Discord chat server][discord-ha] for general Home
-  Assistant discussions and questions.
+- The [Home Assistant Discord chat server][discord].
 - The Home Assistant [Community Forum][forum].
 - Join the [Reddit subreddit][reddit] in [/r/homeassistant][reddit]
 
 You could also [open an issue here with the original add-on][issue] or [open an
-issue here with the forked add-on][issue_forked] GitHub.
+issue here with the forked add-on][issue_forked] on GitHub.
 
-## Authors & contributors
-
-The original setup of this repository is by [Franck Nijhof][frenck].
-
-For a full list of all authors and contributors,
-check [the contributor's page][contributors].
-
-## License
-
-MIT License
-
-Copyright (c) 2021-2023 Franck Nijhof
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-[addon-badge]: https://my.home-assistant.io/badges/supervisor_addon.svg
-[addon]: https://my.home-assistant.io/redirect/supervisor_addon/?addon=88fc4088_tailscale&repository_url=https%3A%2F%2Fgithub.com%2Flmagyar%2Fhomeassistant-addon-tailscale-funnel
-[contributors]: https://github.com/lmagyar/homeassistant-addon-tailscale-funnel/graphs/contributors
-[discord-ha]: https://discord.gg/c5DvZ4e
-[discord]: https://discord.me/hassioaddons
-[forum]: https://community.home-assistant.io/?u=frenck
-[frenck]: https://github.com/frenck
+[discord]: https://discord.gg/c5DvZ4e
+[forum]: https://community.home-assistant.io/
 [issue]: https://github.com/hassio-addons/addon-tailscale/issues
 [issue_forked]: https://github.com/lmagyar/homeassistant-addon-tailscale-funnel/issues
 [reddit]: https://reddit.com/r/homeassistant
-[releases]: https://github.com/lmagyar/homeassistant-addon-tailscale-funnel/releases
-[semver]: http://semver.org/spec/v2.0.0.htm
 [warning_stripe]: https://github.com/lmagyar/homeassistant-addon-tailscale-funnel/raw/main/images/warning_stripe_wide.png
 [community_addon]: https://github.com/hassio-addons/addon-tailscale
 [tailscale_acls]: https://login.tailscale.com/admin/acls
 [tailscale_dns]: https://login.tailscale.com/admin/dns
 [tailscale_feature]: https://login.tailscale.com/admin/settings/features
+[tailscale_info_acl]: https://tailscale.com/kb/1068/acl-tags/
 [tailscale_info_funnel]: https://tailscale.com/kb/1223/tailscale-funnel/
 [tailscale_info_https]: https://tailscale.com/kb/1153/enabling-https/
 [tailscale_info_ssh]: https://tailscale.com/kb/1193/tailscale-ssh/
-[tailscale_info_tags]: https://tailscale.com/kb/1068/acl-tags/
 [tailscale_machines]: https://login.tailscale.com/admin/machines
