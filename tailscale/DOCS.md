@@ -223,6 +223,7 @@ dealing with an unknown issue. Possible values are:
 - `warning`: Exceptional occurrences that are not errors.
 - `error`: Runtime errors that do not require immediate action.
 - `fatal`: Something went terribly wrong. Add-on becomes unusable.
+
 Please note that each level automatically includes log messages from a
 more severe level, e.g., `debug` also shows `info` messages. By default,
 the `log_level` is set to `info`, which is the recommended setting unless
