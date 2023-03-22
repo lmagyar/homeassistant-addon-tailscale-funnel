@@ -10,7 +10,7 @@
 > This fork:
 >   - Enables Tailscale's https Proxy, Funnel and SSH features
 >   - Advertises all supported interfaces as Subnets
->   - Bumps Tailscale to 1.38.1
+>   - Bumps Tailscale to 1.38.2
 >   - Bumps base image to 13.1.3
 
 ![Warning][warning_stripe]
@@ -42,15 +42,12 @@ Create a secure network between your servers, computers, and cloud instances.
 Even when separated by firewalls or subnets, Tailscale just works. Tailscale
 manages firewall rules for you, and works from anywhere you are.
 
-[:books: Read the full add-on documentation][docs]
-
 [aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
 [armhf-shield]: https://img.shields.io/badge/armhf-yes-green.svg
 [armv7-shield]: https://img.shields.io/badge/armv7-yes-green.svg
 [commits-shield]: https://img.shields.io/github/commit-activity/y/lmagyar/homeassistant-addon-tailscale-funnel.svg
 [commits]: https://github.com/lmagyar/homeassistant-addon-tailscale-funnel/commits/main
-[docs]: https://github.com/lmagyar/homeassistant-addon-tailscale-funnel/blob/main/tailscale/DOCS.md
 [github-actions-shield]: https://github.com/lmagyar/homeassistant-addon-tailscale-funnel/workflows/Publish/badge.svg
 [github-actions]: https://github.com/lmagyar/homeassistant-addon-tailscale-funnel/actions
 [i386-shield]: https://img.shields.io/badge/i386-yes-green.svg
