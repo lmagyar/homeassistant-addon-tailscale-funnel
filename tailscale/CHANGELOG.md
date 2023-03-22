@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.7.0.13 (forked)
+
+- Bump Tailscale to 1.38.2
+
 ## 0.7.0.12 (forked)
 
 - Bugfix: use new tailscale serve command syntax
