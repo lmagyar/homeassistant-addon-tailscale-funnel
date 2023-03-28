@@ -1,33 +1,26 @@
 #!/command/with-contenv bashio
+# shellcheck shell=bash
 # ==============================================================================
 # Home Assistant Community Add-on: Tailscale
 # Runs after the machine has been logged in into the Tailscale network
 # ==============================================================================
-declare -a addresses
-declare -a routes
-declare route
+declare -a addresses=()
+declare -a routes=()
 declare ipinfo
 declare tags
 
-function list::contains() {
-  local list=${1}
-  local item=${2}
-
-  if [[ "${list}" =~ (^|[[:space:]])"${item}"($|[[:space:]]) ]]; then
-    return 0
-  else
-    return 1
-  fi
+function appendarray() {
+  local -n array=${1}
+  readarray -t -O "${#array[@]}" array
 }
 
 # Find interfaces and matching addresses from which we can extract routes to be advertised
 for interface in $(bashio::network.interfaces); do
-  addresses+=($(bashio::network.ipv4_address "${interface}"))
-  addresses+=($(bashio::network.ipv6_address "${interface}"))
+  appendarray addresses < <(bashio::network.ipv4_address "${interface}")
+  appendarray addresses < <(bashio::network.ipv6_address "${interface}")
 done
 
 # Extract routes to be advertised
-routes=()
 for address in "${addresses[@]}"; do
   if bashio::var.has_value "${address}"; then
     # Skip local link addresses
@@ -46,12 +39,11 @@ for address in "${addresses[@]}"; do
 
     # Extract unique routes
     ipinfo="$(/usr/bin/ipcalc --json "${address}")"
-    route=$(bashio::jq "${ipinfo}" '.NETWORK + "/" + .PREFIX')
-    if ! list::contains "${routes[*]}" "${route}"; then
-      routes+=("${route}")
-    fi
+    routes+=("$(bashio::jq "${ipinfo}" '.NETWORK + "/" + .PREFIX')")
   fi
 done
+# Remove duplicate entries
+readarray -t routes < <(printf "%s\n" "${routes[@]}" | sort -u)
 
 # Get configured tags
 tags=$(bashio::config "tags//[] | join(\",\")" "")

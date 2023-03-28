@@ -2,16 +2,14 @@
 
 ![Warning][warning_stripe]
 
-> This is a **fork** of the abandoned [community add-on][community_addon]!
+> This is a **fork** of the [community add-on][community_addon]!
 >
 > Use this [invite link](https://login.tailscale.com/admin/feature/rWXbjRuCEc9)
 > to get access to the Funnel feature.
 >
 > This fork:
->   - Enables Tailscale's https Proxy, Funnel and SSH features
+>   - Enables Tailscale's Proxy, Funnel and SSH features
 >   - Advertises all supported interfaces as Subnets
->   - Bumps Tailscale to 1.38.2
->   - Bumps base image to 13.1.3
 
 ![Warning][warning_stripe]
 
