@@ -15,9 +15,6 @@ options+=(--statedir=/data)
 options+=(--no-logs-no-support)
 options+=(--tun=userspace-networking)
 
-# Trigger post process to run, after stuff got connected
-./post &
-
 # Run Tailscale
 if bashio::debug ; then
     exec /opt/tailscaled "${options[@]}"
