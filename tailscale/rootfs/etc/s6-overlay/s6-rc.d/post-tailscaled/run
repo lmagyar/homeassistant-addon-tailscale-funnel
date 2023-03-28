@@ -90,7 +90,7 @@ bashio::log.info "Enabling Tailscale Proxy..."
 declare domain
 
 # Remove previously configured proxy first, because the configuration is persistent between reboots
-/opt/tailscale serve https:443 / http://localhost:$(bashio::core.port) off &> /dev/null || true
+/opt/tailscale serve https:443 / "http://localhost:$(bashio::core.port)" off &> /dev/null || true
 
 # Check if Tailscale HTTPS is enabled
 if ! /opt/tailscale status --self=true --peers=false --json \
@@ -115,7 +115,7 @@ if bashio::var.true "$(bashio::core.ssl)"; then
 fi
 
 # Set up proxy
-if ! /opt/tailscale serve https:443 / http://localhost:$(bashio::core.port); then
+if ! /opt/tailscale serve https:443 / "http://localhost:$(bashio::core.port)"; then
   bashio::log.error "Unable to configure Tailscale Proxy"
   bashio::exit.nok
 fi
