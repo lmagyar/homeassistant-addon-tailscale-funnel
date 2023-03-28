@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/base/amd64:12.0.0
+ARG BUILD_FROM=ghcr.io/hassio-addons/base/amd64:13.1.4
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
@@ -7,6 +7,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Setup base
 ARG BUILD_ARCH=amd64
+ARG TAILSCALE_VERSION="v1.38.2"
 RUN \
     apk add --no-cache \
         ip6tables=1.8.8-r2 \
@@ -25,7 +26,7 @@ RUN \
     && if [ "${BUILD_ARCH}" = "i386" ]; then ARCH="386"; fi \
     \
     && curl -L -s \
-        "https://pkgs.tailscale.com/stable/tailscale_1.38.2_${ARCH}.tgz" \
+        "https://pkgs.tailscale.com/stable/tailscale_${TAILSCALE_VERSION#v}_${ARCH}.tgz" \
         | tar zxvf - -C /opt/ --strip-components 1 \
     \
     && rm -f -r \

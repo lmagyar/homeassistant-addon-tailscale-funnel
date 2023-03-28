@@ -1,4 +1,5 @@
 #!/command/with-contenv bashio
+# shellcheck shell=bash
 # ==============================================================================
 # Home Assistant Community Add-on: Tailscale
 # Runs tailscale
@@ -7,13 +8,12 @@ declare -a options
 
 bashio::log.info 'Starting Tailscale...'
 
+# Configure both state and statedir for tailscale serve command to work properly
 options+=(--state=/data/tailscaled.state)
 options+=(--statedir=/data)
+# Opt out of client log upload
 options+=(--no-logs-no-support)
 options+=(--tun=userspace-networking)
-
-# Trigger post process to run, after stuff got connected
-./post &
 
 # Run Tailscale
 if bashio::debug ; then

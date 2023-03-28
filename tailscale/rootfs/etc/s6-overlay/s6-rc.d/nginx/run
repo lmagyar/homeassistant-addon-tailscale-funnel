@@ -1,11 +1,12 @@
 #!/command/with-contenv bashio
+# shellcheck shell=bash
 # ==============================================================================
 # Home Assistant Community Add-on: Tailscale
-# Take down the S6 supervision tree when Nginx fails
+# Runs the Nginx daemon
 # ==============================================================================
-if [[ "${1}" -ne 0 ]] && [[ "${1}" -ne 256 ]]; then
-  bashio::log.warning "NGINX crashed, halting add-on"
-  /run/s6/basedir/bin/halt
-fi
 
-bashio::log.info "NGINX stopped, restarting..."
+# Wait for the Tailscale webinterface to become available
+bashio::net.wait_for 25899 localhost 900
+
+bashio::log.info "Starting NGinx..."
+exec nginx
