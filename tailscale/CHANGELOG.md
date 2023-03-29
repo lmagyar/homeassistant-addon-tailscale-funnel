@@ -1,5 +1,9 @@
 # Changelog
 
+## vNext (forked)
+
+- Bump base image to 13.1.5
+
 ## 0.8.0.1 (forked)
 
 - Merge PR modifications
