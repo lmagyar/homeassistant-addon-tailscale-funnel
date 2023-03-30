@@ -3,7 +3,7 @@
 ## vNext (forked)
 
 - Bump Tailscale to 1.38.3
-- Bump base image to 13.1.5
+- Bump base image to 13.2.0
 - Suppress logs only after 200 lines if log_level is not set to debug
 
 ## 0.8.0.1 (forked)
