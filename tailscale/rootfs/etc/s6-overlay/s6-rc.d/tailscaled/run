@@ -11,13 +11,15 @@ bashio::log.info 'Starting Tailscale...'
 # Configure both state and statedir for tailscale serve command to work properly
 options+=(--state=/data/tailscaled.state)
 options+=(--statedir=/data)
-# Opt out of client log upload
+# Opt out of client log upload to log.tailscale.io
 options+=(--no-logs-no-support)
 options+=(--tun=userspace-networking)
 
 # Run Tailscale
 if bashio::debug ; then
-    exec /opt/tailscaled "${options[@]}"
+  exec /opt/tailscaled "${options[@]}"
 else
-    exec /opt/tailscaled "${options[@]}" &> /dev/null
+  bashio::log.notice "Tailscale logs will be suppressed after 200 lines, set add-on's configuration option 'log_level' to 'debug' to see further logs"
+  set -o pipefail
+  /opt/tailscaled "${options[@]}" 2>&1 | stdbuf -i0 -oL -eL sed -n -e '1,200p' -e "201c[further tailscaled logs suppressed, set add-on's configuration option 'log_level' to 'debug' to see further tailscaled logs]" 
 fi
