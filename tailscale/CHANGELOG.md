@@ -2,6 +2,7 @@
 
 ## vNext (forked)
 
+- Bump Tailscale to 1.38.3
 - Bump base image to 13.1.5
 
 ## 0.8.0.1 (forked)
