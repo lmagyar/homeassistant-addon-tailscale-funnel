@@ -8,6 +8,15 @@ declare -a options
 
 bashio::log.info 'Starting Tailscale...'
 
+# Remove stale directories/files due to --statedir=/data/state changed in v0.9.0.1
+rm -f /data/derpmap.cached.json
+rm -rf /data/certs/*
+rm -rf /data/files/*
+rm -rf /data/ssh/*
+[[ -d /data/certs/ ]] && rmdir /data/certs
+[[ -d /data/files/ ]] && rmdir /data/files
+[[ -d /data/ssh/ ]] && rmdir /data/ssh
+
 # Configure both state and statedir for tailscale serve command to work properly
 options+=(--state=/data/tailscaled.state)
 options+=(--statedir=/data/state)
