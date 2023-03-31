@@ -1,6 +1,6 @@
 # Changelog
 
-## vNext (forked)
+## 0.9.0.1 (forked)
 
 - Move Tailscale Proxy and Funnel functionality into standalone oneshot S6 service
 - Remove SSH feature
