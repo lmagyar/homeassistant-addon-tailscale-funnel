@@ -120,23 +120,3 @@ fi
 bashio::log.info "Tailscale Proxy is enabled:"
 bashio::log.info "  Your Home Assistant instance is available within your Tailnet VPN at"
 bashio::log.info "  https://${domain}"
-
-bashio::log.info "Enabling Tailscale Funnel..."
-
-# Check if funnel is available
-if ! /opt/tailscale funnel 443 off &> /dev/null; then
-  bashio::log.info "Funnel is not available, is Tailscale's Funnel feature enabled?"
-  bashio::log.info "If you wan't to access this device through Tailscale's Funnel,"
-  bashio::log.info "please change configuration and restart this add-on."
-  bashio::log.info "See the 'Configuration' chapter in the add-on's Documentation."
-  bashio::exit.ok
-fi
-
-# Set up funnel
-if ! /opt/tailscale funnel 443 on; then
-  bashio::log.error "Unable to configure Tailscale Funnel"
-  bashio::exit.nok
-fi
-bashio::log.info "Tailscale Funnel is enabled:"
-bashio::log.info "  Your Homeassistant instance is publicly available on the internet at"
-bashio::log.info "  https://${domain}"
