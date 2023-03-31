@@ -227,48 +227,6 @@ Home Assistant._
 **Note:** _If you encounter strange browser behaviour or strange error messages,
 try to clear all site related cookies, clear all browser cache, restart browser_
 
-## Tailscale SSH
-
-The add-on exposes SSH capabilities that you can enable from your
-Tailscale account.
-
-You can access your Tailscale add-on through SSH from your browser, ie. through
-the Tailscale SSH feature. See [Tailscale SSH][tailscale_info_ssh] for more
-information.
-
-1. Navigate to the [Access controls page][tailscale_acls] of the admin console,
-   and add the below policy entries to the policy file. **Note**: _Replace
-   \<CHANGE-IT-TO-YOUR-TAILSCALE-LOGIN-EMAIL-ADDRESS\> with your email address!_
-   See [Server role accounts using ACL tags][tailscale_info_acls] for more
-   information.
-
-```json
-{
-  // (other tailnet policy entries here)
-  "tagOwners": {
-    "tag:ssh":    ["<CHANGE-IT-TO-YOUR-TAILSCALE-LOGIN-EMAIL-ADDRESS>"],
-  },
-  "ssh": [
-    {
-      "action": "check",
-      "src":    ["autogroup:members"],
-      "dst":    ["tag:ssh"],
-      "users":  ["autogroup:nonroot", "root"],
-    },
-  ],
-}
-```
-
-2. Navigate to the [Machines page][tailscale_machines] of the admin console, and
-   find your Home Assistant instance.
-
-1. Click on the **&hellip;** icon at the right side and select the "Edit ACL
-   tags..." option:
-
-   - Add `tag:ssh` to the list.
-
-   - Click "Save" to apply tags.
-
 ## Support
 
 Got questions?
@@ -298,5 +256,4 @@ issue here with the forked add-on][issue_forked] on GitHub.
 [tailscale_info_funnel]: https://tailscale.com/kb/1223/tailscale-funnel/
 [tailscale_info_https]: https://tailscale.com/kb/1153/enabling-https/
 [tailscale_info_key_expiry]: https://tailscale.com/kb/1028/key-expiry/
-[tailscale_info_ssh]: https://tailscale.com/kb/1193/tailscale-ssh/
 [tailscale_machines]: https://login.tailscale.com/admin/machines
