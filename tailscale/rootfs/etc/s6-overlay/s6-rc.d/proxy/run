@@ -6,9 +6,6 @@
 # ==============================================================================
 
 declare domain
-declare already_configured_handler
-declare already_configured_port
-declare core_port
 
 # Wait for the network to be available and logged in
 while ! bashio::fs.socket_exists "/var/run/tailscale/tailscaled.sock" || \
@@ -27,19 +24,6 @@ then
 fi
 
 domain=$(/opt/tailscale status --self=true --peers=false --json | jq -rc ".CertDomains[0]")
-already_configured_handler=$(/opt/tailscale serve status --json | jq -rc ".Web.\"${domain}:443\".Handlers.\"/\".Proxy//empty")
-already_configured_port=${already_configured_handler#http://127.0.0.1:}
-core_port=$(bashio::core.port)
-
-if bashio::var.has_value $already_configured_port \
-  && ! bashio::var.equals() $already_configured_port $core_port;
-then
-  # Remove previously configured proxy first, because the configuration is persistent between reboots
-  if ! /opt/tailscale serve https:443 / "http://127.0.0.1:${already_configured_port}" off > /dev/null; then
-    bashio::log.error "Unable to remove previously configured Tailscale Proxy"
-    bashio::exit.nok
-  fi
-fi
 
 # Checking if SSL is used
 if bashio::var.true "$(bashio::core.ssl)"; then
@@ -48,7 +32,11 @@ if bashio::var.true "$(bashio::core.ssl)"; then
 fi
 
 # Set up proxy
-if ! /opt/tailscale serve https:443 / "http://127.0.0.1:${core_port}"; then
+# Note: Configuration is persistent between reboots, though configuring the same value won't cause duplicate entries,
+#       but will overwite previous entry if core.port has been changed
+# Note: If a tailnet node is renamed, there will be deprecated entries in status json under .Web.<different-domain:443>,
+#       those can't be removed, no command for that situation currently
+if ! /opt/tailscale serve https:443 / "http://127.0.0.1:$(bashio::core.port)"; then
   bashio::log.error "Unable to configure Tailscale Proxy"
   bashio::exit.nok
 fi
