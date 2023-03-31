@@ -2,6 +2,7 @@
 
 ## vNext (forked)
 
+- Move Tailscale Proxy and Funnel functionality into standalone oneshot S6 service
 - Remove SSH feature
 - Merge changes from original add-on
   - Add support for Taildrop
