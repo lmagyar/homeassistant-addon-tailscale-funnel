@@ -68,6 +68,7 @@ if ! /opt/tailscale up \
   --advertise-exit-node \
   --accept-routes \
   --advertise-routes="${routes[*]}" \
+  --ssh=false \
   --advertise-tags="${tags}";
 then
   bashio::log.error "Unable to start up Tailscale"
