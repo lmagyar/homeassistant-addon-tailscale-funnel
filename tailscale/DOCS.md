@@ -116,14 +116,6 @@ more severe level, e.g., `debug` also shows `info` messages. By default,
 the `log_level` is set to `info`, which is the recommended setting unless
 you are troubleshooting.
 
-## Taildrop
-
-This add-on support [Tailscale's Taildrop][taildrop] feature, which allows
-you to send files to your Home Assistant instance from other Tailscale
-devices.
-
-Received files are stored in the `/share/taildrop` directory.
-
 ## Tailscale Proxy
 
 Tailscale can provide a TLS certificate for your Home Assistant device within
@@ -246,7 +238,6 @@ issue here with the forked add-on][issue_forked] on GitHub.
 [issue]: https://github.com/hassio-addons/addon-tailscale/issues
 [issue_forked]: https://github.com/lmagyar/homeassistant-addon-tailscale-funnel/issues
 [reddit]: https://reddit.com/r/homeassistant
-[taildrop]: https://tailscale.com/taildrop/
 [warning_stripe]: https://github.com/lmagyar/homeassistant-addon-tailscale-funnel/raw/main/images/warning_stripe_wide.png
 [community_addon]: https://github.com/hassio-addons/addon-tailscale
 [tailscale_acls]: https://login.tailscale.com/admin/acls

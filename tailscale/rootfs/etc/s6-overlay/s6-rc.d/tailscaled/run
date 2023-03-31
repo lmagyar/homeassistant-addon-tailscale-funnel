@@ -10,7 +10,7 @@ bashio::log.info 'Starting Tailscale...'
 
 # Configure both state and statedir for tailscale serve command to work properly
 options+=(--state=/data/tailscaled.state)
-options+=(--statedir=/data/state)
+options+=(--statedir=/data)
 # Opt out of client log upload to log.tailscale.io
 options+=(--no-logs-no-support)
 options+=(--tun=userspace-networking)
