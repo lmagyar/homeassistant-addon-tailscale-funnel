@@ -82,7 +82,6 @@ do
 done
 
 bashio::log.info "Tailscale is running"
-bashio::log.info "Tailscale version: $(/opt/tailscale version --daemon=false | head -n 1)"
 
 bashio::log.info "Enabling Tailscale Proxy..."
 
