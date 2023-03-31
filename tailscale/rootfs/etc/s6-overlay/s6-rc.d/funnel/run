@@ -1,0 +1,43 @@
+#!/command/with-contenv bashio
+# shellcheck shell=bash
+# ==============================================================================
+# Home Assistant Community Add-on: Tailscale
+# Enables Tailscale Proxy feature
+# ==============================================================================
+
+declare domain
+
+# Wait for the network to be available and logged in
+while ! bashio::fs.socket_exists "/var/run/tailscale/tailscaled.sock" || \
+  ! /opt/tailscale status --json --peers=false --self=false \
+    | jq --exit-status '.BackendState == "Running"' > /dev/null
+do
+  sleep 2
+done
+
+# Check if Tailscale HTTPS is enabled
+if ! /opt/tailscale status --self=true --peers=false --json \
+  | jq -rce ".CertDomains[0]" > /dev/null;
+then
+  bashio::log.notice "Tailscale's HTTPS support is disabled, therefore add-on's Tailscale Funnel functionality is disabled"
+  bashio::exit.ok
+fi
+
+domain=$(/opt/tailscale status --self=true --peers=false --json | jq -rc ".CertDomains[0]")
+
+# Check if Funnel is available
+if ! /opt/tailscale status --self=true --peers=false --json \
+  | jq -rce '.Self.Capabilities[] | select(startswith("https://tailscale.com/cap/funnel-ports?ports="))' > /dev/null;
+then
+  bashio::log.notice "Tailscale's Funnel support is disabled for this device, therefore add-on's Tailscale Funnel functionality is disabled"
+  bashio::exit.ok
+fi
+
+# Set up funnel
+if ! /opt/tailscale funnel 443 on; then
+  bashio::log.error "Unable to configure Tailscale Funnel"
+  bashio::exit.nok
+fi
+bashio::log.info "Tailscale Funnel is enabled:"
+bashio::log.info "  Your Home Assistant instance is publicly available on the internet at"
+bashio::log.info "  https://${domain}"
