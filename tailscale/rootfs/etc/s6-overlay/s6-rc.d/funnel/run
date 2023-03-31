@@ -25,8 +25,10 @@ fi
 
 domain=$(/opt/tailscale status --self=true --peers=false --json | jq -rc ".CertDomains[0]")
 
-# Check if funnel is available
-if ! /opt/tailscale funnel 443 off &> /dev/null; then
+# Check if Funnel is available
+if ! /opt/tailscale status --self=true --peers=false --json \
+  | jq -rce '.Self.Capabilities[] | select(startswith("https://tailscale.com/cap/funnel-ports?ports="))' > /dev/null;
+then
   bashio::log.notice "Tailscale's Funnel support is disabled for this device, therefore add-on's Tailscale Funnel functionality is disabled"
   bashio::exit.ok
 fi
@@ -37,5 +39,5 @@ if ! /opt/tailscale funnel 443 on; then
   bashio::exit.nok
 fi
 bashio::log.info "Tailscale Funnel is enabled:"
-bashio::log.info "  Your Homeassistant instance is publicly available on the internet at"
+bashio::log.info "  Your Home Assistant instance is publicly available on the internet at"
 bashio::log.info "  https://${domain}"
