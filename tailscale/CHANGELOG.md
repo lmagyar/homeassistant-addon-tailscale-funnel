@@ -5,7 +5,6 @@
 - Move Tailscale Proxy and Funnel functionality into standalone oneshot S6 service
 - Remove SSH feature
 - Merge changes from original add-on
-  - Add support for Taildrop
   - Advertise all supported interfaces as Tailscale Subnets
   - Suppress tailscaled logs after 200 lines
   - Bump Tailscale to 1.38.3
