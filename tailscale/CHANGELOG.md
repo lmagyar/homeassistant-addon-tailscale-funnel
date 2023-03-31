@@ -2,6 +2,7 @@
 
 ## vNext (forked)
 
+- Remove SSH feature
 - Merge changes from original add-on
   - Add support for Taildrop
   - Advertise all supported interfaces as Tailscale Subnets

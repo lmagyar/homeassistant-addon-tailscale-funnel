@@ -8,7 +8,7 @@
 > to get access to the Funnel feature.
 >
 > This fork:
->   - Enables Tailscale's Proxy, Funnel and SSH features
+>   - Enables Tailscale's Proxy and Funnel features
 
 ![Warning][warning_stripe]
 
