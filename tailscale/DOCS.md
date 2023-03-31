@@ -9,7 +9,6 @@
 >
 > This fork:
 >   - Enables Tailscale's Proxy, Funnel and SSH features
->   - Advertises all supported interfaces as Subnets
 
 ![Warning][warning_stripe]
 
