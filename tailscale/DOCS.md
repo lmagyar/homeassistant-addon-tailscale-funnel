@@ -141,6 +141,7 @@ http:
   trusted_proxies:
     - 127.0.0.1
 ```
+
 3. Navigate to the [DNS page][tailscale_dns] of the admin console:
 
    - Choose a Tailnet name.
