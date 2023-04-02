@@ -1,0 +1,14 @@
+---
+configuration:
+  tags:
+    name: ACL tags
+    description: >-
+      Specific ACL tags for this Tailscale instance. They need to start with `tag:`.
+  log_level:
+    name: Log level
+    description: >-
+      Controls the level of log details the add-on provides.
+  proxy_port:
+    name: SOCKS5 and HTTP proxy port
+    description: >-
+      Port on localhost to listen on for connections from SOCKS5 and HTTP proxy-speaking applications.
