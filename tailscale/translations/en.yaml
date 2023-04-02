@@ -1,0 +1,10 @@
+---
+configuration:
+  tags:
+    name: ACL tags
+    description: >-
+      Specific ACL tags for this Tailscale instance. They need to start with `tag:`.
+  log_level:
+    name: Log level
+    description: >-
+      Controls the level of log details the add-on provides.
