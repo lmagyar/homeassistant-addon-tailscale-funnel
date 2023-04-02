@@ -1,3 +1,7 @@
+
+| <img src="https://github.com/lmagyar/homeassistant-addon-tailscale-funnel/raw/main/images/stop_sign.png" title="Stop"> | === END OF LIFE === END OF LIFE === END OF LIFE === END OF LIFE === <br> Please use the https://github.com/lmagyar/homeassistant-addon-tailscale repository! | <img src="https://github.com/lmagyar/homeassistant-addon-tailscale-funnel/raw/main/images/stop_sign.png" title="Stop"> |
+| --- | --- | --- |
+
 # Home Assistant Custom Add-on: Tailscale with Funnel support
 
 ![Warning][warning_stripe]
