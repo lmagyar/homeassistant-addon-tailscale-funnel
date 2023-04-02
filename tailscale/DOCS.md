@@ -4,9 +4,6 @@
 
 > This is a **fork** of the [community add-on][community_addon]!
 >
-> Use this [invite link](https://login.tailscale.com/admin/feature/rWXbjRuCEc9)
-> to get access to the Funnel feature.
->
 > This fork:
 >   - Enables Tailscale's Proxy and Funnel features
 >   - Enables Tailscale's SOCKS5 and HTTP outbound proxy
@@ -179,11 +176,6 @@ proxying for HTTPS communication.
 
 See [Tailscale Funnel][tailscale_info_funnel] for more information.
 
-> **Note:** _This is an alpha feature that is invite only. Please go to
-  Tailscale's [Settings / Feature Previews page][tailscale_feature], and under
-  the Funnel section check that you are invited and have access to this
-  feature._
-  
 1. Navigate to the [Access controls page][tailscale_acls] of the admin console,
    and add the below policy entries to the policy file. **Note**: _Replace
    \<CHANGE-IT-TO-YOUR-TAILSCALE-LOGIN-EMAIL-ADDRESS\> with your email address!_
@@ -252,7 +244,6 @@ issue here with the forked add-on][issue_forked] on GitHub.
 [community_addon]: https://github.com/hassio-addons/addon-tailscale
 [tailscale_acls]: https://login.tailscale.com/admin/acls
 [tailscale_dns]: https://login.tailscale.com/admin/dns
-[tailscale_feature]: https://login.tailscale.com/admin/settings/features
 [tailscale_info_acls]: https://tailscale.com/kb/1068/acl-tags/
 [tailscale_info_funnel]: https://tailscale.com/kb/1223/tailscale-funnel/
 [tailscale_info_https]: https://tailscale.com/kb/1153/enabling-https/

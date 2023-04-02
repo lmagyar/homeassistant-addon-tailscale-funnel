@@ -4,9 +4,6 @@
 
 > This is a **fork** of the [community add-on][community_addon]!
 >
-> Use this [invite link](https://login.tailscale.com/admin/feature/rWXbjRuCEc9)
-> to get access to the Funnel feature.
->
 > This fork:
 >   - Enables Tailscale's Proxy and Funnel features
 >   - Enables Tailscale's SOCKS5 and HTTP outbound proxy
@@ -53,7 +50,7 @@ manages firewall rules for you, and works from anywhere you are.
 [license-shield]: https://img.shields.io/github/license/lmagyar/homeassistant-addon-tailscale-funnel.svg
 [licence]: https://github.com/lmagyar/homeassistant-addon-tailscale-funnel/blob/main/LICENSE
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2023.svg
-[project-stage-shield]: https://img.shields.io/badge/project%20stage-alpha-orange.svg
+[project-stage-shield]: https://img.shields.io/badge/project%20stage-beta-orange.svg
 [releases-shield]: https://img.shields.io/github/tag/lmagyar/homeassistant-addon-tailscale-funnel.svg?label=release
 [releases]: https://github.com/lmagyar/homeassistant-addon-tailscale-funnel/tags
 [updated-shield]: https://img.shields.io/github/last-commit/lmagyar/homeassistant-addon-tailscale-funnel/main?label=updated
