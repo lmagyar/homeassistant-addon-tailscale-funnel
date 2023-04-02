@@ -1,5 +1,9 @@
 # Changelog
 
+## vNext (forked)
+
+- Enable Tailscale's SOCKS5 and HTTP outbound proxy
+
 ## 0.9.0.1 (forked)
 
 - Move Tailscale Proxy and Funnel functionality into standalone oneshot S6 service
