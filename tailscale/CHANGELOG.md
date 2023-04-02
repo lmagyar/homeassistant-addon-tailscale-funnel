@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.9.0.3 (forked)
+
+***=== END OF LIFE === END OF LIFE === END OF LIFE === END OF LIFE ===***
+
+**PLEASE USE: https://github.com/lmagyar/homeassistant-addon-tailscale**
+
+**Funnel feature is beta now at Tailscale, so I've added it to my other Tailscale add-on.**
+
+**At this point the two add-ons are functionally equivalent.**
+
+***=== END OF LIFE === END OF LIFE === END OF LIFE === END OF LIFE ===***
+
 ## 0.9.0.2 (forked)
 
 - Enable Tailscale's SOCKS5 and HTTP outbound proxy
